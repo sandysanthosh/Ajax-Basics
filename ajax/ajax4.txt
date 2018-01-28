@@ -1,0 +1,28 @@
+ajax intercat with php:
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<button id="button">user</button>
+<script>
+document.getElementById('button').addEventListener('click',loadText);
+function loadText(){
+    // create XHR Object
+var xhr=new XMLHttpRequest();
+   // OPEN - type , url/file , async
+   xhr.open('GET','process.php',true);     
+   xhr.onload = function(){   // onloadS
+	   console.log(this.responseText);
+   }
+   xhr.send();
+}
+</script>
+</body>
+</html>

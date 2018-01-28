@@ -1,0 +1,34 @@
+ajax3 html:
+
+external api:
+->ajax to fetch external api
+->https://api.github.com/users
+->take top 100 users name from github
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<button id="button">user</button>
+<script>
+document.getElementById('button').addEventListener('click',loadText);
+function loadText(){
+    // create XHR Object
+var xhr=new XMLHttpRequest();
+   // OPEN - type , url/file , async
+   xhr.open('GET','https://api.github.com/users',true);     
+   xhr.onload = function(){   // onload
+   if(this.status == 200){
+	    var user= JSON.parse(this.responseText);
+	    console.log(user);   
+   }
+   }
+   xhr.send();
+}
+</script>
+</body>
+</html>
+

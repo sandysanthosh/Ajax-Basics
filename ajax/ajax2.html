@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<button id="button">user</button>
+<button id="button1">user1</button>
+<script>
+document.getElementById('button').addEventListener('click',loadText);
+document.getElementById('button1').addEventListener('click',loadText2);
+function loadText(){
+    // create XHR Object
+var xhr=new XMLHttpRequest();
+   // OPEN - type , url/file , async
+   xhr.open('GET','user.json',true);     
+   xhr.onload = function(){   // onload
+   if(this.status == 200){
+	    var user= JSON.parse(this.responseText);
+	    console.log(user.name);
+	    var output ='';
+	    
+	    output += '<ul>' +
+	    '<li>ID: '+ user.id+'</li>'+
+	    '<li>ID: '+ user.name+'</li>'+
+	    '<li>ID: '+ user.email+'</li>'+
+	    '</ul>';
+	    
+	    document.getElementById('user2').innerHTML = output;
+	   } 
+   }
+   xhr.send();
+}
+
+function loadText2(){
+    // create XHR Object
+var xhr=new XMLHttpRequest();
+   // OPEN - type , url/file , async
+   xhr.open('GET','user2.json',true);     
+   xhr.onload = function(){   // onload
+   if(this.status == 200){
+	    var user= JSON.parse(this.responseText);
+	    console.log(user.name);
+	    var output ='';
+	    for(var i in user2){}
+	    output += '<ul>' +
+	    '<li>ID: '+ user2[i].id+'</li>'+
+	    '<li>ID: '+ user2[i].name+'</li>'+
+	    '<li>ID: '+ user2[i].email+'</li>'+
+	    '</ul>';
+   }
+	    document.getElementById('user2').innerHTML = output;
+	   } 
+   }
+   xhr.send();
+}
+</script>
+</body>
+</html>
